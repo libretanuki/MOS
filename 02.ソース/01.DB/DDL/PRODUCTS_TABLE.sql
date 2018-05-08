@@ -16,3 +16,6 @@ COMMENT ON COLUMN PRODUCTS.product_details IS '商品詳細';
 COMMENT ON COLUMN PRODUCTS.product_price IS '商品価格';
 COMMENT ON COLUMN PRODUCTS.insert_ymd IS 'レコード作成日';
 COMMENT ON COLUMN PRODUCTS.update_ymd IS 'レコード更新日';
+
+CREATE TRIGGER update_ymd BEFORE UPDATE ON PRODUCTS FOR EACH ROW
+  EXECUTE PROCEDURE set_update_time();
